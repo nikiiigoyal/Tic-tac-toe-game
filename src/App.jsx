@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 function Square({ value, onSquareClick }) {
   return (
     <button 
@@ -36,7 +35,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
   return (
     <div>
-      <div className="mb-4 text-xl font-semibold">{status}</div>
+      <div className="mb-4 text-2xl font-semibold">{status}</div>
       <div className="grid">
         <div className="board-row flex">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
