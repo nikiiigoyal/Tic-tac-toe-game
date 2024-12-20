@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button 
+      className="w-20 h-20 text-3xl font-bold bg-white border-r-2 border-b-2 border-[#bbbbbb] last:border-r-0 focus:outline-none"
+      onClick={onSquareClick}
+    >
       {value}
     </button>
   );
@@ -31,24 +34,26 @@ function Board({ xIsNext, squares, onPlay }) {
   }
 
   return (
-    <>
-      <div className="status">{status}</div>
-      <div className="board-row ">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+    <div>
+      <div className="mb-4 text-xl font-semibold">{status}</div>
+      <div className="grid">
+        <div className="board-row flex">
+          <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
+          <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
+          <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+        </div>
+        <div className="board-row flex">
+          <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
+          <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+          <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+        </div>
+        <div className="board-row flex last:border-b-0">
+          <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
+          <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
+          <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+        </div>
       </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -77,13 +82,18 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button 
+          className="py-1 px-3 mt-2 hover:bg-gray-100 rounded"
+          onClick={() => jumpTo(move)}
+        >
+          {description}
+        </button>
       </li>
     );
   });
 
   return (
-    <div className="game">
+    <div className="flex flex-col md:flex-row p-8 gap-8">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
