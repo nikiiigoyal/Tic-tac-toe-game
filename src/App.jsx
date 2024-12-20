@@ -3,13 +3,13 @@ import { useState } from 'react';
 function Square({ value, onSquareClick }) {
   return (
     <button 
-      className="w-20 h-20 text-3xl font-bold bg-white border-r-2 border-b-2 border-[#bbbbbb] last:border-r-0 focus:outline-none"
+      className="w-20 h-20 text-3xl font-bold bg-white border-r-4 border-b-4 border-[#bbbbbb] focus:outline-none"
       onClick={onSquareClick}
     >
       {value}
-    </button>
+    </button>                
   );
-}
+  }
 
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
@@ -47,7 +47,7 @@ function Board({ xIsNext, squares, onPlay }) {
           <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
           <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
         </div>
-        <div className="board-row flex last:border-b-0">
+        <div className="board-row flex border-b-0">
           <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
           <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
