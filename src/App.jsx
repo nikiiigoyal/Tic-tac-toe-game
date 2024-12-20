@@ -4,6 +4,7 @@ function Square({ value, onSquareClick }) {
   return (
     <button 
       className="w-20 h-20 text-3xl font-bold bg-white border-r-4 border-b-4 border-[#bbbbbb] focus:outline-none"
+  
       onClick={onSquareClick}
     >
       {value}
